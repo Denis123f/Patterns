@@ -1,5 +1,5 @@
 #include <vector>
-
+#include <iostream>
 template <typename T>
 class Search_Straregy{
 
@@ -34,9 +34,12 @@ public:
 
 template <typename T>
 class Working_with_Search{
+
     Search_Straregy<T>* strategy;
 
-    void set_Strategy(Search_Straregy<T>& strategy){
+public:
+
+    void set_Strategy(Search_Straregy<T>* strategy){
         this->strategy = strategy;
     }
 
@@ -44,7 +47,5 @@ class Working_with_Search{
         return strategy->search(qwerty);
     }
 };
-int main(){
-    std::vector<int> ab = {1, 2, 3};
-    Working_with_Search<int>* set;
-}
+
+int main(){}
