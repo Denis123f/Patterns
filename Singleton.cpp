@@ -1,3 +1,4 @@
+template <typename T>
 class Singl{
 
     Singl() = default;
@@ -5,31 +6,51 @@ class Singl{
     Singl& operator=(const Singl&);
 
     
-    static Singl* create_object; 
+    static Singl<T>* create_object; 
+    T values;
     /*
     Поля для работы с классом.
     */
+    static void destroy(){
+
+        if(create_object == nullptr) return;
+        delete create_object;
+        create_object = nullptr;
+    }
+
 public:
     
     explicit Singl(Singl&&);
     Singl& operator=(const Singl&&);
 
-    static Singl* create_obj(){
+    static Singl<T>* create(T object){
 
-        if(create_object==nullptr) 
+        if(create_object==nullptr) {
             create_object = new Singl();
+            create_object->values = object;
+        }
         return create_object;
 
+    }
+
+    T& get_values(){
+        return values;
     }
     /*
     Методы для работы с классом
     */
     ~Singl(){
-        delete create_object;
+
+        if(create_object != nullptr)
+        destroy();
     }
 };  
 
-Singl* Singl::create_object = nullptr;
+template <typename T>
+Singl<T>* Singl<T>::create_object = nullptr;
+
+
 int main(){
-    const char* a = "wow";
+    
+
 }
