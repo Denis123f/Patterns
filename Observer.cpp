@@ -1,6 +1,8 @@
 #include <vector>
 
+
 class Observer{
+    
     virtual void update(int orbit_Earth, double distance, int happy_people) = 0;
 };
 
