@@ -13,7 +13,6 @@ class Singl{
     */
     static void destroy(){
 
-        if(create_object == nullptr) return;
         delete create_object;
         create_object = nullptr;
     }
@@ -52,5 +51,5 @@ Singl<T>* Singl<T>::create_object = nullptr;
 
 int main(){
     
-
+    
 }
