@@ -2,9 +2,10 @@ template <typename T>
 class Singl{
 
     Singl() = default;
-    Singl(const Singl&);
-    Singl& operator=(const Singl&);
-
+    Singl(const Singl&)=delete;
+    Singl(Singl&&)=delete;
+    Singl& operator=(const Singl&)=delete;
+    Singl& operator=(Singl&&)=delete;
     
     static Singl<T>* create_object; 
     T values;
@@ -19,10 +20,8 @@ class Singl{
 
 public:
     
-    explicit Singl(Singl&&);
-    Singl& operator=(const Singl&&);
-
-    static Singl<T>* create(T object){
+    static Singl<T>* create(T object)
+    {
 
         if(create_object==nullptr) {
             create_object = new Singl();
@@ -50,6 +49,4 @@ Singl<T>* Singl<T>::create_object = nullptr;
 
 
 int main(){
-    
-    
 }
